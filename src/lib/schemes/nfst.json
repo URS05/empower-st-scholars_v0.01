@@ -1,0 +1,60 @@
+{
+  "code": "NFST",
+  "name": "National Fellowship for ST Students",
+  "fullName": "National Fellowship for Scheduled Tribe Students",
+  "scope": "Research in India",
+  "description": "Financial assistance for Scheduled Tribe students pursuing research in UGC recognised Indian universities.",
+  "eligibilityRules": [
+    {
+      "id": "st_category",
+      "rule": "ST category required",
+      "field": "category",
+      "operator": "in",
+      "value": ["ST", "Scheduled Tribe"]
+    },
+    {
+      "id": "income_cap",
+      "rule": "Annual family income below 6 lakhs",
+      "field": "annualFamilyIncome",
+      "operator": "lt",
+      "value": 600000
+    },
+    {
+      "id": "ugc_enrolment",
+      "rule": "Must be enrolled in a UGC recognised university",
+      "field": "ugcRecognized",
+      "operator": "eq",
+      "value": true
+    },
+    {
+      "id": "age_limit",
+      "rule": "Age below 40",
+      "field": "age",
+      "operator": "lt",
+      "value": 40
+    },
+    {
+      "id": "no_other_fellowship",
+      "rule": "No other fellowship active",
+      "field": "otherFellowshipActive",
+      "operator": "eq",
+      "value": false
+    }
+  ],
+  "requiredDocuments": [
+    { "id": "st_certificate", "label": "ST certificate" },
+    { "id": "income_certificate", "label": "Income certificate" },
+    { "id": "admission_letter", "label": "Admission letter" },
+    { "id": "marksheets", "label": "Marksheets" },
+    { "id": "bank_details", "label": "Bank details" },
+    { "id": "passport_photo", "label": "Passport photo" }
+  ],
+  "selection": {
+    "method": "merit",
+    "description": "Merit based on academic score weighted 70%, interview 30%.",
+    "weights": [
+      { "criterion": "academicScore", "label": "Academic score", "weight": 0.7 },
+      { "criterion": "interview", "label": "Interview", "weight": 0.3 }
+    ]
+  }
+}

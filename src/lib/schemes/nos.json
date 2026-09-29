@@ -1,0 +1,62 @@
+{
+  "code": "NOS",
+  "name": "National Overseas Scholarship",
+  "fullName": "National Overseas Scholarship for ST Students",
+  "scope": "Master's or Ph.D. abroad",
+  "description": "Support for eligible Scheduled Tribe students pursuing a Master's or Ph.D. at a top-ranked overseas university.",
+  "eligibilityRules": [
+    {
+      "id": "st_category",
+      "rule": "ST category required",
+      "field": "category",
+      "operator": "in",
+      "value": ["ST", "Scheduled Tribe"]
+    },
+    {
+      "id": "income_cap",
+      "rule": "Annual family income below 8 lakhs",
+      "field": "annualFamilyIncome",
+      "operator": "lt",
+      "value": 800000
+    },
+    {
+      "id": "qs_top_500_abroad",
+      "rule": "Admission in a top 500 QS ranked university abroad",
+      "operator": "all",
+      "conditions": [
+        { "field": "studyLocation", "operator": "in", "value": ["abroad", "overseas"] },
+        { "field": "qsWorldRank", "operator": "lte", "value": 500 }
+      ]
+    },
+    {
+      "id": "age_limit",
+      "rule": "Age below 35",
+      "field": "age",
+      "operator": "lt",
+      "value": 35
+    },
+    {
+      "id": "programme_level",
+      "rule": "Master's or Ph.D. only",
+      "field": "programmeLevel",
+      "operator": "in",
+      "value": ["masters", "master's", "m.a.", "m.sc.", "m.tech", "phd", "ph.d.", "doctorate"]
+    }
+  ],
+  "requiredDocuments": [
+    { "id": "st_certificate", "label": "ST certificate" },
+    { "id": "income_certificate", "label": "Income certificate" },
+    { "id": "foreign_admission_letter", "label": "Foreign university admission letter" },
+    { "id": "passport", "label": "Passport" },
+    { "id": "visa_documents", "label": "Visa documents" },
+    { "id": "marksheets", "label": "Marksheets" }
+  ],
+  "selection": {
+    "method": "merit",
+    "description": "Merit based on academic score 60%, university rank 40%.",
+    "weights": [
+      { "criterion": "academicScore", "label": "Academic score", "weight": 0.6 },
+      { "criterion": "universityRank", "label": "University rank", "weight": 0.4 }
+    ]
+  }
+}
